@@ -1,0 +1,24 @@
+{
+  "name": "ssaatt-2526-be-andalusianstreet",
+  "version": "1.0.0",
+  "description": "Back-end de la Fase 3 del proyecto de Andalusian Street",
+  "keywords": [
+    "node.js",
+    "express",
+    "mongodb",
+    "ODS-12",
+    "moda",
+    "reciclaje"
+  ],
+  "license": "ISC",
+  "author": "Andalusian Street",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^5.2.1",
+    "mongodb": "^7.2.0"
+  }
+}
