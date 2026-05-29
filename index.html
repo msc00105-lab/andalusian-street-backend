@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>ANDALUSIAN STREET</title>
+    <link rel="stylesheet" href="estilos.css">
+    <script src="script.js"></script>
+</head>
+
+<body>
+
+    <header id="cabecera-principal">
+        <h1>Andalusian Street</h1>
+        
+        <aside id="zona-errores" class="oculto mensaje-error"></aside> <!--css:class-->
+    </header>
+
+    <nav id="navegacion-principal">
+        <ul id="menu-principal">
+            <li><a href="#" id="nav-inicio" class="activo" onclick="cambiarSeccion(1)">Inicio</a></li>
+            <li><a href="#" id="nav-registro" onclick="cambiarSeccion(2)">Registro</a></li>
+            
+            <li><a href="#" id="nav-crear-prenda" class="requiere-auth oculto" onclick="cambiarSeccion(4)">Añadir Prenda</a></li>
+            <li><a href="#" id="nav-listar-prendas" class="requiere-auth oculto" onclick="cambiarSeccion(5)">Mi Armario Virtual</a></li>
+            <li><a href="#" id="nav-modificar-prenda" class="requiere-auth oculto" onclick="cambiarSeccion(6)">Modificar Prenda</a></li>
+            
+            <li><a href="#" id="nav-acerca" onclick="cambiarSeccion(3)">Acerca de...</a></li>
+        </ul>
+    </nav>
+
+    <main id="contenido-principal">
+        
+        <section id="inicio" class="seccion-spa">
+            <h2>Inicio</h2>
+            <div class="contenedor-flexible">
+                <aside id="aside-inicio">
+                    <img src="login.jpeg" alt="Logo de la marca" class="img-aside">
+                    <p>Accede a tu armario virtual. Puedes iniciar sesión de forma segura introduciendo tu nombre de usuario y contraseña. Una vez dentro podrás navegar por nuestra tienda online de moda sostenible y continuar apoyando activamente nuestra iniciativa para reducir los residuos textiles diarios.</p>
+                </aside>
+
+                <div class="formulario">
+                    <form id="form-login" action="http://labtelema.ujaen.es/form.php" method="post" onsubmit="procesarLogin(event)">
+                        <fieldset> <!--agrupar los campos del formulario-->
+                            <legend>Datos de acceso</legend> 
+                            <label for="user-login">Usuario:</label>
+                            <input type="text" id="user-login" name="user" minlength="4" maxlength="16" required>
+
+                            <label for="pass-login">Clave:</label>
+                            <input type="password" id="pass-login" name="password" minlength="4" maxlength="16" required>
+
+                            <input type="submit" value="Entrar">
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section id="registro" class="seccion-spa oculto">
+            <h2>Registro de usuario</h2>
+            <div class="contenedor-flexible inversa">
+                <aside id="aside-registro">
+                    <img src="login.jpeg" alt="Logo de la marca" class="img-aside">
+                    <p>Regístrate hoy y únete a nuestra marca comprometida con los ODS. Rellena el breve cuestionario para crear una cuenta nueva. No te vas a arrepentir de formar parte de esta comunidad que busca activamente promover una moda ética, ecológica, sostenible y muy responsable.</p>
+                </aside>
+
+                <div class="formulario">
+                    <form id="form-registro" action="http://labtelema.ujaen.es/form.php" method="post" onsubmit="procesarRegistro(event)">
+                        <fieldset>
+                            <legend>Datos Personales</legend>
+                            <label for="reg-user">Usuario:</label>
+                            <input type="text" id="reg-user" name="user" minlength="4" maxlength="16" required>
+
+                            <label for="reg-email">Correo electrónico:</label>
+                            <input type="email" id="reg-email" name="email" required>
+
+                            <label for="reg-name">Nombre:</label>
+                            <input type="text" id="reg-name" name="name" maxlength="32" required>
+
+                            <label for="reg-surname">Apellidos:</label>
+                            <input type="text" id="reg-surname" name="surname" maxlength="32">
+
+                            <label for="reg-pass">Clave:</label>
+                            <input type="password" id="reg-pass" name="password" minlength="4" maxlength="16" required>
+
+                            <label for="reg-pass-check">Repetir Clave:</label>
+                            <input type="password" id="reg-pass-check" name="password_check" minlength="4" maxlength="16" required>
+
+                            <input type="submit" value="Registrar">
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section id="acerca" class="seccion-spa oculto">
+            <h2>Acerca de</h2>
+            <div class="contenedor-flexible">
+                <aside id="aside-acerca">
+                    <img src="ods12.jpeg" alt="Logo Objetivos de Desarrollo Sostenible" class="img-aside">
+                    <p>Proyecto universitario con los Objetivos de Desarrollo Sostenible para reducir residuos textiles implementándolo en una página web. Aquí podrás conocer un poco más a los integrantes que hacen posible que esta página avance día a día y la información académica de nuestra titulación actual.</p>
+                </aside>
+
+                <div class="texto-acerca">
+                    <h3>Nuestro Equipo</h3>
+                    <ul>
+                        <li>Integrante 1: MªVictoria Zorrilla Casilari</li>
+                        <li>Integrante 2: Carlos Muñoz Fernández</li>
+                        <li>Integrante 3: Marcos Sanchez Caraballo</li>
+                        <li>Integrante 4: Pablo Cabrera Carrasco</li>
+                    </ul>
+                    <p><strong>Asignatura:</strong> Servicios y Aplicaciones Telemáticas</p>
+                    <p><strong>Curso:</strong> 2025-2026</p>
+                    <p><strong>Titulación:</strong> Ingeniería de Tecnologías de Telecomunicación</p>
+                </div>
+            </div>
+        </section>
+
+        <!--Creacion de prenda-->
+        <section id="crear-prenda" class="seccion-spa oculto">
+            <h2>Añadir Prenda Sostenible</h2>
+            <div class="formulario">
+                <form id="form-crear" onsubmit="procesarCreacion(event)">
+                    <fieldset>
+                        <legend>Detalles de la Prenda</legend>
+                        <label for="prenda-nombre">Nombre de la prenda:</label>
+                        <input type="text" id="prenda-nombre" name="nombre" required>
+                        
+                        <label for="prenda-tipo">Tipo:</label>
+                        <select id="prenda-tipo" name="tipo" required>
+                            <option value="Camiseta">Camiseta</option>
+                            <option value="Pantalón">Pantalón</option>
+                            <option value="Chaqueta">Chaqueta</option>
+                            <option value="Accesorios">Accesorios</option>
+                        </select>
+
+                        <label for="prenda-material">Material:</label>
+                        <input type="text" id="prenda-material" name="material" required>
+                        
+                        <input type="submit" value="Guardar Prenda">
+                    </fieldset>
+                </form>
+            </div>
+        </section>
+
+        <section id="listar-prendas" class="seccion-spa oculto">
+            <h2>Mi Armario Virtual</h2>
+            <div id="contenedor-listado" class="contenedor-flexible">
+                </div>
+        </section>
+
+        <section id="modificar-prenda" class="seccion-spa oculto">
+            <h2>Modificar Prenda</h2>
+            <p id="texto-ayuda-modificar">
+            Selecciona una prenda desde “Mi Armario Virtual” y pulsa en “Editar” para cargar sus datos en este formulario.
+            </p>
+
+            <!--Modificacion de prenda-->
+            <div class="formulario">
+                <form id="form-modificar" onsubmit="procesarModificacion(event)">
+                    <fieldset>
+                        <legend>Editar Detalles</legend>
+                        <input type="hidden" id="mod-id" name="id"> <!--type hidden:No se muestra por pantalla pero Javascript si puede leerlo
+                                                                        nameid:nombre con el valor q se guarda y luego pasa a JSON-->
+                        
+                        <label for="mod-nombre">Nombre de la prenda:</label>
+                        <input type="text" id="mod-nombre" name="nombre" required>
+                        
+                        <label for="mod-tipo">Tipo:</label>
+                        <select id="mod-tipo" name="tipo" required>
+                            <option value="Camiseta">Camiseta</option>
+                            <option value="Pantalón">Pantalón</option>
+                            <option value="Chaqueta">Chaqueta</option>
+                            <option value="Accesorios">Accesorios</option>
+                        </select>
+
+                        <label for="mod-material">Material:</label>
+                        <input type="text" id="mod-material" name="material" required>
+                        
+                        <input type="submit" value="Actualizar Prenda">
+                    </fieldset>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <footer id="pie-pagina">
+        <div class="datos-academicos">
+            <p><strong>Equipo:</strong> Andalusian Street | <strong>Curso:</strong> 2025-2026</p>
+            <p><strong>Asignatura:</strong> Servicios y Aplicaciones Telemáticas</p>
+            <p><strong>Titulación:</strong> Ingeniería de Tecnologías de Telecomunicación</p>
+        </div>
+        <hr class="divisor-footer">
+        <p class="copyright">&copy; 2026 ANDALUSIAN STREET - Universidad de Jaén</p>
+        <img src="Uja.jpeg" alt="Logo de la Universidad de Jaén" class="logo-uja">
+    </footer>
+</body>
+</html>
